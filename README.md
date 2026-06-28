@@ -2,7 +2,7 @@
 
 An AI-powered document Q&A system that lets you upload documents and ask questions about them in natural language — powered by RAG (Retrieval-Augmented Generation), LLaMA 3.3, and FAISS.
 
-🔗 **Repository:** [github.com/lipsamohapatra2k/enterprise-chatbot-v2](https://github.com/lipsamohapatra2k/enterprise-chatbot-v2)
+🔗 **Repository:** [github.com/lipsamohapatra2k/FileQuery-Enterprise-Chatbot](https://github.com/lipsamohapatra2k/FileQuery-Enterprise-Chatbot)
 
 ---
 
@@ -74,8 +74,8 @@ USER
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/lipsamohapatra2k/enterprise-chatbot-v2.git
-cd enterprise-chatbot-v2
+git clone https://github.com/lipsamohapatra2k/FileQuery-Enterprise-Chatbot.git
+cd FileQuery-Enterprise-Chatbot
 ```
 
 ### 2. Backend setup
@@ -123,7 +123,7 @@ Go to `http://localhost:5173`, create an account, upload a document, and start a
 ## 📂 Project Structure
 
 ```
-enterprise-chatbot-v2/
+FileQuery-Enterprise-Chatbot/
 ├── backend/
 │   ├── main.py              # FastAPI app and routes
 │   ├── rag.py                # RAG pipeline: chunking, embedding, retrieval, LLM

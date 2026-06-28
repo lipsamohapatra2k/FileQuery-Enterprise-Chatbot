@@ -11,11 +11,16 @@ _reranker = None
 def get_llm():
     global _llm
     if _llm is None:
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "GROQ_API_KEY is not set. Create backend/.env with your Groq API key."
+            )
         from langchain_groq import ChatGroq
         _llm = ChatGroq(
             model="llama-3.3-70b-versatile",
             temperature=0.1,
-            api_key=os.getenv("GROQ_API_KEY")
+            api_key=api_key
         )
         print("✅ LLM loaded")
     return _llm
@@ -155,7 +160,7 @@ def retrieve_and_rerank(query, vector_store, final_k=5):
 
 # ── PROMPT ────────────────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """You are a precise enterprise document assistant.
+SYSTEM_PROMPT = """You are FileQuery Enterprise Chatbot — a precise document assistant.
 STRICT RULES:
 1. Answer ONLY from the CONTEXT provided.
 2. NEVER use outside knowledge.

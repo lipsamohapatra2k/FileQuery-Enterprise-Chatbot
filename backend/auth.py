@@ -4,7 +4,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 import bcrypt
 
-SECRET_KEY = "enterprise-chatbot-secret-2024"
+SECRET_KEY = "filequery-enterprise-chatbot-secret-2024"
 ALGORITHM  = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
 

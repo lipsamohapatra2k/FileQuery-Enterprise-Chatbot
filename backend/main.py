@@ -104,7 +104,10 @@ async def ask_question(
         raise HTTPException(status_code=400, detail="No documents loaded.")
 
     history = chat_history if request.use_memory else []
-    answer, sources = ask(request.question, vector_store, history)
+    try:
+        answer, sources = ask(request.question, vector_store, history)
+    except ValueError as e:
+        raise HTTPException(status_code=503, detail=str(e))
 
     if request.use_memory:
         chat_history.append({"role": "user",     "content": request.question})

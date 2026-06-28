@@ -90,13 +90,15 @@ def save_message(
             existing.update(req.documents)
             session.documents = ",".join(filter(None, existing))
 
-        # Auto-title from first user message
-        msg_count = db.query(ChatMessage).filter(
-            ChatMessage.session_id == session_id
-        ).count()
-        if msg_count == 0 and req.role == "user":
-            session.title = req.content[:50] + ("..." if len(req.content) > 50 else "")
+        session.updated_at = datetime.utcnow()
+        db.commit()
 
+    # Auto-title from first user message
+    msg_count = db.query(ChatMessage).filter(
+        ChatMessage.session_id == session_id
+    ).count()
+    if msg_count == 0 and req.role == "user":
+        session.title = req.content[:50] + ("..." if len(req.content) > 50 else "")
         session.updated_at = datetime.utcnow()
         db.commit()
 
